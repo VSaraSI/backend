@@ -11,7 +11,8 @@ import javax.persistence.*;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product {
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,25 +24,4 @@ public class Product {
 
     @ManyToOne
     private Category category;
-
-    @Nullable
-    private String CPU;
-
-    @Nullable
-    private String RAM;
-
-    @Nullable
-    private String storage;
-
-    @Nullable
-    private String GPU;
-
-    @Nullable
-    private String weight;
-
-    @Nullable
-    private String operatingSystem;
-
-    @Nullable
-    private String dimensions;
 }
