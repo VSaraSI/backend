@@ -9,8 +9,5 @@ import java.util.Optional;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    @Query(value = "select p.id, p.name, p.price, p.category_id from Product as p", nativeQuery = true)
-    List<Product> findAllProducts();
-
     Optional<Product> findByName(String name);
 }
