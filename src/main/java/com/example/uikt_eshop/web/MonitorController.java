@@ -1,4 +1,4 @@
-package com.example.uikt_eshop.controller;
+package com.example.uikt_eshop.web;
 
 import com.example.uikt_eshop.models.products.Monitor;
 import com.example.uikt_eshop.service.MonitorService;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "monitors")
+@RequestMapping(value = "/api/monitors")
 public class MonitorController {
 
     private final MonitorService monitorService;

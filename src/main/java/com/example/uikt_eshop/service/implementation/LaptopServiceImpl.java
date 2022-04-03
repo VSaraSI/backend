@@ -1,6 +1,6 @@
-package com.example.uikt_eshop.service.impl;
+package com.example.uikt_eshop.service.implementation;
 
-import com.example.uikt_eshop.exception.EntityNotFoundException;
+import com.example.uikt_eshop.models.exceptions.EntityNotFoundException;
 import com.example.uikt_eshop.models.products.Laptop;
 import com.example.uikt_eshop.repository.LaptopRepository;
 import com.example.uikt_eshop.service.LaptopService;

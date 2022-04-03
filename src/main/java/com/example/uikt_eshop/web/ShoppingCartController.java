@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/shopping-cart")
+@RequestMapping("api/shoppingCart")
 public class ShoppingCartController {
     private final ShoppingCartService shoppingCartService;
 

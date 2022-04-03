@@ -1,4 +1,4 @@
-package com.example.uikt_eshop.controller;
+package com.example.uikt_eshop.web;
 
 import com.example.uikt_eshop.models.products.Laptop;
 import com.example.uikt_eshop.service.LaptopService;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "laptops")
+@RequestMapping(value = "/api/laptops")
 public class LaptopController {
 
     private final LaptopService laptopService;

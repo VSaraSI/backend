@@ -1,4 +1,4 @@
-package com.example.uikt_eshop.service.impl;
+package com.example.uikt_eshop.service.implementation;
 
 import com.example.uikt_eshop.models.Product;
 import com.example.uikt_eshop.models.ShoppingCart;
@@ -20,7 +20,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     public List<Product> listAllProductsInShoppingCart(Long cartId) {
-        if(!this.shoppingCartRepository.findById(cartId).isPresent())
+        if(this.shoppingCartRepository.findById(cartId).isEmpty())
             throw new ShoppingCartNotFoundException(cartId);
         return this.shoppingCartRepository.findById(cartId).get().getProducts();
 

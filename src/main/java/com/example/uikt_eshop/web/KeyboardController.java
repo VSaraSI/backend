@@ -1,4 +1,4 @@
-package com.example.uikt_eshop.controller;
+package com.example.uikt_eshop.web;
 
 import com.example.uikt_eshop.models.products.Keyboard;
 import com.example.uikt_eshop.service.KeyboardService;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "keyboards")
+@RequestMapping(value = "/api/keyboards")
 public class KeyboardController {
 
     private final KeyboardService keyboardService;

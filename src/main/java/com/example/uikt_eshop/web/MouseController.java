@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/mouses")
+@RequestMapping("/api/mice")
 public class MouseController {
     private final MouseService mouseService;
 

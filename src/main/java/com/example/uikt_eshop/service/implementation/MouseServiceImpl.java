@@ -1,4 +1,4 @@
-package com.example.uikt_eshop.service.impl;
+package com.example.uikt_eshop.service.implementation;
 
 import com.example.uikt_eshop.models.products.Mouse;
 import com.example.uikt_eshop.repository.MouseRepository;
