@@ -28,7 +28,8 @@ public class Monitor extends Product {
 
     private String color;
 
-    public Monitor(String backLightType, String resolution, Long powerInKw, String color) {
+    public Monitor(String name, Double price, Category category, String backLightType, String resolution, Long powerInKw, String color) {
+        super(name,price,category);
         this.backLightType=backLightType;
         this.resolution=resolution;
         this.powerInKw=powerInKw;
