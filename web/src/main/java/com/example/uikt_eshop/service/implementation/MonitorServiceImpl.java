@@ -44,13 +44,13 @@ public class MonitorServiceImpl implements MonitorService {
         this.monitorRepository.deleteByName(monitorDto.getName());
 
         Category category = this.categoryRepository.findById(monitorDto.getCategory())
-                .orElseThrow(() -> new com.example.uikt_eshop.models.exceptions.EntityNotFoundException("Category not found"));
+                .orElseThrow(() -> new EntityNotFoundException("Category not found"));
 
         Monitor monitor = new Monitor(monitorDto.getName(),
-                monitorDto.getPrice(), category, monitorDto.getBackLightType(),
+                monitorDto.getPrice(), category,
+                monitorDto.getBackLightType(),
                 monitorDto.getResolution(),monitorDto.getPowerInKw(), monitorDto.getColor());
 
-        
         this.monitorRepository.save(monitor);
 
         return Optional.of(monitor);
