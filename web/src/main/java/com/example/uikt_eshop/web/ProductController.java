@@ -2,6 +2,7 @@ package com.example.uikt_eshop.web;
 
 import com.example.uikt_eshop.models.Product;
 import com.example.uikt_eshop.models.dto.ProductDto;
+import com.example.uikt_eshop.models.dto.ProductPriceDto;
 import com.example.uikt_eshop.service.implementation.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -37,8 +38,8 @@ public class ProductController {
     }
 
     @PutMapping("/edit/{id}")
-    public ResponseEntity<Product> save(@PathVariable Long id, @RequestBody ProductDto productDto) {
-        return this.productService.edit(id, productDto)
+    public ResponseEntity<Product> save(@PathVariable Long id, @RequestBody ProductPriceDto price) {
+        return this.productService.edit(id, price.getPrice())
                 .map(product -> ResponseEntity.ok().body(product))
                 .orElseGet(() -> ResponseEntity.badRequest().build());
     }

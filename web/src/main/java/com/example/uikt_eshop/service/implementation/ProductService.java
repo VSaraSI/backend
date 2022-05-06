@@ -52,8 +52,15 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public Optional<Product> edit(Long id, ProductDto productDto) {
-        return Optional.empty();
+    public Optional<Product> edit(Long id,Double price) {
+        Product product = this.productRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("Product not found"));
+
+        product.setPrice(price);
+
+        this.productRepository.save(product);
+        return Optional.of(product);
+
     }
 
     @Override
