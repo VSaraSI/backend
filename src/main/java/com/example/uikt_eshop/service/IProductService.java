@@ -15,7 +15,7 @@ public interface IProductService {
 
     Optional<Product> save(ProductDto productDto);
 
-    Optional<Product> edit(Long id, ProductDto productDto);
+    Optional<Product> edit(Long id, Double price);
 
     void deleteById(Long id);
 }
