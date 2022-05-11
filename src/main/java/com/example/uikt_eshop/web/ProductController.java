@@ -2,6 +2,7 @@ package com.example.uikt_eshop.web;
 
 import com.example.uikt_eshop.models.Product;
 import com.example.uikt_eshop.models.dto.ProductDto;
+import com.example.uikt_eshop.models.dto.ProductPriceDto;
 import com.example.uikt_eshop.service.implementation.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/products")
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:3000")
 public class ProductController {
 
     private final ProductService productService;
@@ -36,8 +38,8 @@ public class ProductController {
     }
 
     @PutMapping("/edit/{id}")
-    public ResponseEntity<Product> save(@PathVariable Long id, @RequestBody ProductDto productDto) {
-        return this.productService.edit(id, productDto)
+    public ResponseEntity<Product> save(@PathVariable Long id, @RequestBody ProductPriceDto price) {
+        return this.productService.edit(id, price.getPrice())
                 .map(product -> ResponseEntity.ok().body(product))
                 .orElseGet(() -> ResponseEntity.badRequest().build());
     }
@@ -45,7 +47,8 @@ public class ProductController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteById(@PathVariable Long id) {
         this.productService.deleteById(id);
-        if(this.productService.findById(id).isEmpty()) return ResponseEntity.ok().build();
+        if(this.productService.findById(id).isEmpty())
+            return ResponseEntity.ok().build();
         return ResponseEntity.badRequest().build();
     }
 

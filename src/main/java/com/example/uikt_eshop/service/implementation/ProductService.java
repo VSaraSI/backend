@@ -1,7 +1,10 @@
 package com.example.uikt_eshop.service.implementation;
 
+import com.example.uikt_eshop.models.Category;
 import com.example.uikt_eshop.models.Product;
 import com.example.uikt_eshop.models.dto.ProductDto;
+import com.example.uikt_eshop.models.exceptions.EntityNotFoundException;
+import com.example.uikt_eshop.repository.CategoryRepository;
 import com.example.uikt_eshop.repository.ProductRepository;
 import com.example.uikt_eshop.service.IProductService;
 import lombok.AllArgsConstructor;
@@ -15,6 +18,7 @@ import java.util.Optional;
 public class ProductService implements IProductService {
 
     private final ProductRepository productRepository;
+    private final CategoryRepository categoryRepository;
 
     @Override
     public List<Product> findAll() {
@@ -33,13 +37,29 @@ public class ProductService implements IProductService {
 
     @Override
     public Optional<Product> save(ProductDto productDto) {
-        //TODO Implement save when frontend decides the productDTO for saving.
-        return Optional.empty();
+        Category category = this.categoryRepository.findById(productDto.getCategory())
+                .orElseThrow(() -> new EntityNotFoundException("Category not found"));
+
+        this.productRepository.deleteByName(productDto.getName());
+
+        Product product = new Product(productDto.getName(), productDto.getPrice(),
+                category);
+
+        this.productRepository.save(product);
+
+        return Optional.of(product);
     }
 
     @Override
-    public Optional<Product> edit(Long id, ProductDto productDto) {
-        return Optional.empty();
+    public Optional<Product> edit(Long id, Double price) {
+        Product product = this.productRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("Product not found"));
+
+        product.setPrice(price);
+
+        this.productRepository.save(product);
+        return Optional.of(product);
+
     }
 
     @Override

@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface KeyboardRepository extends JpaRepository<Keyboard, Long> {
+    void deleteByName(String name);
 }

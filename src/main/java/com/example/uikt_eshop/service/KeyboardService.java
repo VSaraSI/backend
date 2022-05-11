@@ -1,8 +1,11 @@
 package com.example.uikt_eshop.service;
 
+import com.example.uikt_eshop.models.dto.KeyboardDto;
+import com.example.uikt_eshop.models.dto.ProductDto;
 import com.example.uikt_eshop.models.products.Keyboard;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface KeyboardService {
 
@@ -10,9 +13,9 @@ public interface KeyboardService {
 
     Keyboard getKeyboardById(Long id);
 
-    Keyboard createKeyboard(Keyboard keyboard);
+    Optional<Keyboard> createKeyboard(KeyboardDto keyboardDto);
 
-    Keyboard updateKeyboard(Long id, Keyboard keyboard);
+    void updateKeyboard(Long id,Double price);
 
     void deleteKeyboard(Long id);
 }

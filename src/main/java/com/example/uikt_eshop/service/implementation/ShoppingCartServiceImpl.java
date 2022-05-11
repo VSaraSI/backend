@@ -9,30 +9,29 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class ShoppingCartServiceImpl implements ShoppingCartService {
+//@Service
+//public class ShoppingCartServiceImpl implements ShoppingCartService {
+//
+//    private final ShoppingCartRepository shoppingCartRepository;
+//
+//    public ShoppingCartServiceImpl(ShoppingCartRepository shoppingCartRepository) {
+//        this.shoppingCartRepository = shoppingCartRepository;
+//    }
 
-    private final ShoppingCartRepository shoppingCartRepository;
+//    @Override
+//    public List<Product> listAllProductsInShoppingCart(Long cartId) {
+//        if(this.shoppingCartRepository.findById(cartId).isEmpty())
+//            throw new ShoppingCartNotFoundException(cartId);
+//        return this.shoppingCartRepository.findById(cartId).get().getProducts();
+//    }
 
-    public ShoppingCartServiceImpl(ShoppingCartRepository shoppingCartRepository) {
-        this.shoppingCartRepository = shoppingCartRepository;
-    }
-
-    @Override
-    public List<Product> listAllProductsInShoppingCart(Long cartId) {
-        if(this.shoppingCartRepository.findById(cartId).isEmpty())
-            throw new ShoppingCartNotFoundException(cartId);
-        return this.shoppingCartRepository.findById(cartId).get().getProducts();
-
-    }
-
-    @Override
-    public ShoppingCart getActiveShoppingCart(String username) {
-        return null;
-    }
-
-    @Override
-    public ShoppingCart addProductToShoppingCart(String username, Long productId) {
-        return null;
-    }
-}
+//    @Override
+//    public ShoppingCart getActiveShoppingCart(String username) {
+//        return null;
+//    }
+//
+//    @Override
+//    public ShoppingCart addProductToShoppingCart(String username, Long productId) {
+//        return null;
+//    }
+//}

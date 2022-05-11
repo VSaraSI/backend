@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MonitorRepository extends JpaRepository<Monitor, Long> {
+
+    void deleteByName(String name);
+
 }

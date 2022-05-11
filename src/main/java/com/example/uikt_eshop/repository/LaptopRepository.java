@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LaptopRepository extends JpaRepository<Laptop, Long> {
+    void deleteByName(String name);
 }

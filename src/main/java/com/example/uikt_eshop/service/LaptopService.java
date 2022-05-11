@@ -1,8 +1,11 @@
 package com.example.uikt_eshop.service;
 
+import com.example.uikt_eshop.models.dto.LaptopDto;
+import com.example.uikt_eshop.models.dto.ProductDto;
 import com.example.uikt_eshop.models.products.Laptop;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface LaptopService {
 
@@ -10,9 +13,9 @@ public interface LaptopService {
 
     Laptop getLaptopById(Long id);
 
-    Laptop createLaptop(Laptop laptop);
+    Optional<Laptop> createLaptop(LaptopDto laptopDto);
 
-    Laptop updateLaptop(Long id, Laptop laptop);
+    void updateLaptop(Long id, Double price);
 
     void deleteLaptop(Long id);
 }

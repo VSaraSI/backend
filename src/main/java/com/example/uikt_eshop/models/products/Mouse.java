@@ -1,5 +1,6 @@
 package com.example.uikt_eshop.models.products;
 
+import com.example.uikt_eshop.models.Category;
 import com.example.uikt_eshop.models.Product;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,4 +28,13 @@ public class Mouse extends Product{
     private String DPIResolution;
 
     private Boolean isGaming;
+
+    public Mouse(String name, Double price, Category category, String cableLength, String cableType, String DPIResolution, Boolean isGaming){
+        super(name, price, category);
+        this.cableLength=cableLength;
+        this.cableType=cableType;
+        this.DPIResolution=DPIResolution;
+        this.isGaming=isGaming;
+    }
+
 }

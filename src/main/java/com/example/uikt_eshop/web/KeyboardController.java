@@ -1,7 +1,11 @@
 package com.example.uikt_eshop.web;
 
+import com.example.uikt_eshop.models.dto.KeyboardDto;
+import com.example.uikt_eshop.models.dto.MonitorDto;
 import com.example.uikt_eshop.models.products.Keyboard;
+import com.example.uikt_eshop.models.products.Monitor;
 import com.example.uikt_eshop.service.KeyboardService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,14 +30,11 @@ public class KeyboardController {
         return keyboardService.getKeyboardById(id);
     }
 
-    @PostMapping
-    Keyboard createKeyboard(@RequestBody Keyboard keyboard) {
-        return keyboardService.createKeyboard(keyboard);
-    }
-
-    @PutMapping(value = "{id}")
-    Keyboard updateKeyboard(@PathVariable Long id, @RequestBody Keyboard keyboard) {
-        return keyboardService.updateKeyboard(id, keyboard);
+    @PostMapping("/addKeyboard")
+    ResponseEntity<Keyboard> createKeyboard(@RequestBody KeyboardDto keyboardDto) {
+        return this.keyboardService.createKeyboard(keyboardDto)
+                .map(monitor -> ResponseEntity.ok().body(monitor))
+                .orElseGet(() -> ResponseEntity.badRequest().build());
     }
 
     @DeleteMapping(value = "{id}")

@@ -1,7 +1,9 @@
 package com.example.uikt_eshop.web;
 
+import com.example.uikt_eshop.models.dto.MonitorDto;
 import com.example.uikt_eshop.models.products.Monitor;
 import com.example.uikt_eshop.service.MonitorService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,22 +23,24 @@ public class MonitorController {
         return monitorService.getMonitors();
     }
 
-    @GetMapping(value = "{id}")
+    @GetMapping(value = "/{id}")
     Monitor getMonitorById(@PathVariable Long id) {
         return monitorService.getMonitorById(id);
     }
 
-    @PostMapping
-    Monitor createMonitor(@RequestBody Monitor monitor) {
-        return monitorService.createMonitor(monitor);
+    @PostMapping(value="/addMonitor")
+    ResponseEntity<Monitor> createMonitor(@RequestBody MonitorDto monitorDto) {
+        return this.monitorService.createMonitor(monitorDto)
+                .map(monitor -> ResponseEntity.ok().body(monitor))
+                .orElseGet(() -> ResponseEntity.badRequest().build());
     }
 
-    @PutMapping(value = "{id}")
+    @PutMapping(value = "/{id}")
     Monitor updateMonitor(@PathVariable Long id, @RequestBody Monitor monitor) {
         return monitorService.updateMonitor(id, monitor);
     }
 
-    @DeleteMapping(value = "{id}")
+    @DeleteMapping(value = "/{id}")
     void deleteMonitor(@PathVariable Long id) {
         monitorService.deleteMonitor(id);
     }

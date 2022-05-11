@@ -1,7 +1,11 @@
 package com.example.uikt_eshop.web;
 
+import com.example.uikt_eshop.models.dto.MonitorDto;
+import com.example.uikt_eshop.models.dto.MouseDto;
+import com.example.uikt_eshop.models.products.Monitor;
 import com.example.uikt_eshop.models.products.Mouse;
 import com.example.uikt_eshop.service.MouseService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,14 +29,11 @@ public class MouseController {
         return mouseService.getMouseById(id);
     }
 
-    @PostMapping
-    public Mouse createMouse(@RequestBody Mouse mouse){
-        return mouseService.createMouse(mouse);
-    }
-
-    @PutMapping("/{id}")
-    public Mouse updateMouse(@PathVariable Long id, @RequestBody Mouse mouse){
-        return mouseService.updateMouse(id, mouse);
+    @PostMapping(value="/addMice")
+    ResponseEntity<Mouse> createMouse(@RequestBody MouseDto mouseDto) {
+        return this.mouseService.createMouse(mouseDto)
+                .map(monitor -> ResponseEntity.ok().body(monitor))
+                .orElseGet(() -> ResponseEntity.badRequest().build());
     }
 
     @DeleteMapping("/{id}")

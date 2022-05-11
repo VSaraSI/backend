@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MouseRepository extends JpaRepository<Mouse, Long> {
+    void deleteByName(String name);
+
 }

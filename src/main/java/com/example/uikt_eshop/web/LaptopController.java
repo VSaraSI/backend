@@ -1,7 +1,11 @@
 package com.example.uikt_eshop.web;
 
+import com.example.uikt_eshop.models.dto.LaptopDto;
+import com.example.uikt_eshop.models.dto.MonitorDto;
 import com.example.uikt_eshop.models.products.Laptop;
+import com.example.uikt_eshop.models.products.Monitor;
 import com.example.uikt_eshop.service.LaptopService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,15 +30,13 @@ public class LaptopController {
         return laptopService.getLaptopById(id);
     }
 
-    @PostMapping
-    Laptop createLaptop(@RequestBody Laptop laptop) {
-        return laptopService.createLaptop(laptop);
+    @PostMapping("/addLaptop")
+    ResponseEntity<Laptop> createLaptop(@RequestBody LaptopDto laptopDto) {
+        return this.laptopService.createLaptop(laptopDto)
+                .map(monitor -> ResponseEntity.ok().body(monitor))
+                .orElseGet(() -> ResponseEntity.badRequest().build());
     }
 
-    @PutMapping(value = "{id}")
-    Laptop updateLaptop(@PathVariable Long id, @RequestBody Laptop laptop) {
-        return laptopService.updateLaptop(id, laptop);
-    }
 
     @DeleteMapping(value = "{id}")
     void deleteLaptop(@PathVariable Long id) {
