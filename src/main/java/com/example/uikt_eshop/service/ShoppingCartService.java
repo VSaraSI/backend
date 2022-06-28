@@ -8,7 +8,7 @@ import java.util.List;
 public interface ShoppingCartService {
     List<Product> listAllProductsInShoppingCart(Long cartId);
 
-    ShoppingCart getActiveShoppingCart(String username);
+    ShoppingCart getActiveShoppingCart(Long id);
 
     ShoppingCart addProductToShoppingCart(String username, Long productId);
 }

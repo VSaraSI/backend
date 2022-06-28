@@ -8,22 +8,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-//@RestController
-//@RequestMapping("api/shoppingCart")
-//public class ShoppingCartController {
-//    private final ShoppingCartService shoppingCartService;
-//
-//    public ShoppingCartController(ShoppingCartService shoppingCartService) {
-//        this.shoppingCartService = shoppingCartService;
-//    }
-//
-//    @GetMapping
-//    public ShoppingCart getShoppingCart(String username){
-//        return shoppingCartService.getActiveShoppingCart(username);
-//    }
-//
+@RestController
+@RequestMapping("api/shoppingCart")
+public class ShoppingCartController {
+    private final ShoppingCartService shoppingCartService;
+
+    public ShoppingCartController(ShoppingCartService shoppingCartService) {
+        this.shoppingCartService = shoppingCartService;
+    }
+
+    @GetMapping
+    public ShoppingCart getShoppingCart(Long id){
+        return shoppingCartService.getActiveShoppingCart(id);
+    }
+
 //    @PostMapping("/add-product/{id}")
 //    public String addProductToShoppingCart(){
-//        return
+//        return;
 //    }
-//}
+}
