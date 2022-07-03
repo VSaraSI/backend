@@ -1,6 +1,5 @@
 package com.example.uikt_eshop.models.products;
 
-import com.example.uikt_eshop.models.Category;
 import com.example.uikt_eshop.models.Product;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,12 +27,4 @@ public class Keyboard extends Product {
     private Long cableLengthInCm;
 
     private Integer numberOfKeys;
-
-    public Keyboard(String name, Double price, Category category, Boolean spillResistant, Boolean isGaming, Long cableLengthInCm, Integer numberOfKeys) {
-        super(name, price, category);
-        this.spillResistant = spillResistant;
-        this.isGaming = isGaming;
-        this.cableLengthInCm = cableLengthInCm;
-        this.numberOfKeys = numberOfKeys;
-    }
 }

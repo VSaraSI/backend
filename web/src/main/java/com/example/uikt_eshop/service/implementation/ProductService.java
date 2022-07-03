@@ -4,7 +4,6 @@ import com.example.uikt_eshop.models.Category;
 import com.example.uikt_eshop.models.Product;
 import com.example.uikt_eshop.models.dto.ProductDto;
 import com.example.uikt_eshop.models.exceptions.EntityNotFoundException;
-import com.example.uikt_eshop.models.products.Monitor;
 import com.example.uikt_eshop.repository.CategoryRepository;
 import com.example.uikt_eshop.repository.ProductRepository;
 import com.example.uikt_eshop.service.IProductService;
@@ -52,7 +51,7 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public Optional<Product> edit(Long id,Double price) {
+    public Optional<Product> edit(Long id, Double price) {
         Product product = this.productRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("Product not found"));
 
