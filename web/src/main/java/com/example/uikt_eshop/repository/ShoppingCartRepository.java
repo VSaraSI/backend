@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface ShoppingCartRepository extends JpaRepository<ShoppingCart, Long> {
+public interface ShoppingCartRepository extends JpaRepository<ShoppingCart, Integer> {
     Optional<ShoppingCart> findByStatus(ShoppingCartStatus status);
 }

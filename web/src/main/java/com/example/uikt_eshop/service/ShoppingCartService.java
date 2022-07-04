@@ -6,9 +6,7 @@ import com.example.uikt_eshop.models.ShoppingCart;
 import java.util.List;
 
 public interface ShoppingCartService {
-    List<Product> listAllProductsInShoppingCart(Long cartId);
-
-    ShoppingCart getActiveShoppingCart(Long id);
-
-    ShoppingCart addProductToShoppingCart(String username, Long productId);
+    ShoppingCart getShoppingCart(int id);
+    List<Product> listAllProductsInShoppingCart(int id);
+    void addProductToShoppingCart(int id, Long productId);
 }

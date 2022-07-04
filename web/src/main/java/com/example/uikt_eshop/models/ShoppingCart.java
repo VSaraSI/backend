@@ -17,8 +17,7 @@ import java.util.List;
 public class ShoppingCart {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id = 1;
 
     private LocalDateTime dateCreated;
 

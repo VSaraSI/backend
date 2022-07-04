@@ -2,10 +2,12 @@ package com.example.uikt_eshop.service.implementation;
 
 import com.example.uikt_eshop.models.Category;
 import com.example.uikt_eshop.models.Product;
+import com.example.uikt_eshop.models.ShoppingCart;
 import com.example.uikt_eshop.models.dto.ProductDto;
 import com.example.uikt_eshop.models.exceptions.EntityNotFoundException;
 import com.example.uikt_eshop.repository.CategoryRepository;
 import com.example.uikt_eshop.repository.ProductRepository;
+import com.example.uikt_eshop.repository.ShoppingCartRepository;
 import com.example.uikt_eshop.service.IProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,9 +21,16 @@ public class ProductService implements IProductService {
 
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
+    private final ShoppingCartRepository cartRepository;
 
     @Override
     public List<Product> findAll() {
+
+        if(!this.cartRepository.existsById(1)){
+            ShoppingCart cart = new ShoppingCart();
+            cartRepository.saveAndFlush(cart);
+        }
+
         return this.productRepository.findAll();
     }
 
